@@ -1,0 +1,4 @@
+app:
+  jwt:
+    # Fictitious key used only by the automated tests.
+    secret: test-only-secret-key-with-at-least-32-bytes

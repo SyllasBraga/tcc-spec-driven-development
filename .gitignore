@@ -1,0 +1,6 @@
+.env
+target/
+.claude/settings.local.json
+
+backups-planilha/
+~$*

@@ -1,0 +1,4 @@
+conduit:
+  jwt:
+    # Segredo fictício, usado somente nos testes automatizados.
+    secret: segredo-ficticio-de-teste-com-mais-de-32-caracteres

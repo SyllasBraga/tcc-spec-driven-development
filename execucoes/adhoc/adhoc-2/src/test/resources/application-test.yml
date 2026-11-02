@@ -1,0 +1,4 @@
+# Chave fictícia, usada apenas nos testes automatizados.
+app:
+  jwt:
+    secret: chave-ficticia-de-teste-com-mais-de-32-caracteres

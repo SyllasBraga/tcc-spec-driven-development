@@ -1,0 +1,6 @@
+# Perfil de desenvolvimento: banco local em Docker, variáveis lidas do .env (não versionado).
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  flyway:
+    locations: classpath:db/migration,classpath:db/dev-seed

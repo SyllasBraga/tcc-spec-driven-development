@@ -1,0 +1,70 @@
+Executei a suíte de testes e tive estes erros:
+
+   --> auth.hurl:120:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+120 | HTTP 200
+    |      ^^^ actual value is <422>
+    |
+
+   --> auth.hurl:129:0
+    |
+    | GET {{host}}/api/user
+    | ...
+129 | jsonpath "$.user.bio" == null
+    |   actual:   string <Temporary bio>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:205:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+205 | HTTP 200
+    |      ^^^ actual value is <422>
+    |
+
+   --> auth.hurl:214:0
+    |
+    | GET {{host}}/api/user
+    | ...
+214 | jsonpath "$.user.image" == null
+    |   actual:   string <https://example.com/temp.jpg>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:230:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+230 | jsonpath "$.user.image" == null
+    |   actual:   string <https://example.com/temp.jpg>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:244:0
+    |
+    | GET {{host}}/api/user
+    | ...
+244 | jsonpath "$.user.image" == null
+    |   actual:   string <https://example.com/temp.jpg>
+    |   expected: null <null>
+    |
+
+   --> errors_auth.hurl:113:0
+    |
+    | POST {{host}}/api/users/login
+    | ...
+113 | jsonpath "$.errors.credentials[0]" == "invalid"
+    |   actual:   none
+    |   expected: string <invalid>
+    |
+
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |

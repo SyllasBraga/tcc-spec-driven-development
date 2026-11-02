@@ -1,0 +1,58 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.2)
+
+2026-11-01T21:12:24.879-03:00  INFO 26484 --- [blog] [           main] com.example.blog.BlogApplication         : Starting BlogApplication using Java 25.0.5 with PID 26484 (C:\Users\sylla\Documents\tcc-wks\execucoes\sdd\sdd-4\target\classes started by syllas in C:\Users\sylla\Documents\tcc-wks\execucoes\sdd\sdd-4)
+2026-11-01T21:12:24.882-03:00  INFO 26484 --- [blog] [           main] com.example.blog.BlogApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-11-01T21:12:25.508-03:00  INFO 26484 --- [blog] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-01T21:12:25.558-03:00  INFO 26484 --- [blog] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 2 JPA repository interfaces.
+2026-11-01T21:12:25.982-03:00  INFO 26484 --- [blog] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-11-01T21:12:25.993-03:00  INFO 26484 --- [blog] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-01T21:12:25.993-03:00  INFO 26484 --- [blog] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-01T21:12:26.046-03:00  INFO 26484 --- [blog] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1126 ms
+2026-11-01T21:12:26.307-03:00  INFO 26484 --- [blog] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-01T21:12:26.429-03:00  INFO 26484 --- [blog] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1a7163e3
+2026-11-01T21:12:26.431-03:00  INFO 26484 --- [blog] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-01T21:12:26.450-03:00  INFO 26484 --- [blog] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/sdd_4 (PostgreSQL 18.6)
+2026-11-01T21:12:26.501-03:00  INFO 26484 --- [blog] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-01T21:12:26.504-03:00  INFO 26484 --- [blog] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.015s)
+2026-11-01T21:12:26.518-03:00  INFO 26484 --- [blog] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-01T21:12:26.557-03:00  INFO 26484 --- [blog] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-01T21:12:26.565-03:00  INFO 26484 --- [blog] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - criar tabela usuario"
+2026-11-01T21:12:26.591-03:00  INFO 26484 --- [blog] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - criar tabela seguimento"
+2026-11-01T21:12:26.609-03:00  INFO 26484 --- [blog] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.015s)
+2026-11-01T21:12:26.690-03:00  INFO 26484 --- [blog] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-01T21:12:26.738-03:00  INFO 26484 --- [blog] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.13.Final
+2026-11-01T21:12:27.093-03:00  INFO 26484 --- [blog] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-01T21:12:27.168-03:00  INFO 26484 --- [blog] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/sdd_4]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.6
+	Default catalog/schema: sdd_4/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-01T21:12:27.863-03:00  INFO 26484 --- [blog] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-01T21:12:27.900-03:00  INFO 26484 --- [blog] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-01T21:12:27.957-03:00  INFO 26484 --- [blog] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-01T21:12:28.975-03:00  INFO 26484 --- [blog] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-11-01T21:12:29.035-03:00  INFO 26484 --- [blog] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-11-01T21:12:29.041-03:00  INFO 26484 --- [blog] [           main] com.example.blog.BlogApplication         : Started BlogApplication in 4.505 seconds (process running for 4.852)
+2026-11-01T21:12:32.060-03:00  INFO 26484 --- [blog] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-01T21:12:32.060-03:00  INFO 26484 --- [blog] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-01T21:12:32.061-03:00  INFO 26484 --- [blog] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-01T21:12:32.369-03:00  INFO 26484 --- [blog] [nio-8081-exec-2] c.e.blog.usuario.service.UsuarioService  : Usuário 1 cadastrado
+2026-11-01T21:12:32.788-03:00  INFO 26484 --- [blog] [nio-8081-exec-5] c.e.blog.usuario.service.UsuarioService  : Usuário 2 cadastrado
+2026-11-01T21:12:33.178-03:00  INFO 26484 --- [blog] [nio-8081-exec-2] c.e.blog.usuario.service.UsuarioService  : Usuário 3 cadastrado
+2026-11-01T21:12:33.251-03:00  INFO 26484 --- [blog] [nio-8081-exec-4] c.e.blog.usuario.service.UsuarioService  : Usuário 4 cadastrado
+2026-11-01T21:12:33.417-03:00  INFO 26484 --- [blog] [nio-8081-exec-1] c.e.blog.usuario.service.UsuarioService  : Usuário 5 cadastrado

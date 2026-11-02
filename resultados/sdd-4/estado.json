@@ -1,0 +1,71 @@
+{
+  "sessoes": {
+    "especificacao": "b376dfb7-32cb-4f37-827e-f6ff4d6ce16c",
+    "geracao": "293e9bc0-e8d6-4edc-9466-c0d7a232e450",
+    "correcao": "57ee6759-45fe-46ba-b2e4-dbb1eff65b7f"
+  },
+  "rodadas": [
+    {
+      "rodada": 0,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 5,
+      "aprovadas": 48,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> auth.hurl:91:0\n    |\n    | PUT {{host}}/api/user\n    | ...\n 91 | jsonpath \"$.user.bio\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> auth.hurl:98:0\n    |\n    | GET {{host}}/api/user\n    | ...\n 98 | jsonpath \"$.user.bio\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> auth.hurl:177:0\n    |\n    | PUT {{host}}/api/user\n    | ...\n177 | jsonpath \"$.user.image\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> auth.hurl:184:0\n    |\n    | GET {{host}}/api/user\n    | ...\n184 | jsonpath \"$.user.image\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 1,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 2,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 3,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    }
+  ],
+  "inicio": "2026-11-01T16:59:10",
+  "commit_inicial": "f6a7985",
+  "checkpoints": {
+    "antes-especificacao": "5bbb474772664506ca9f297251a51961d9cacd08",
+    "antes-geracao": "1843aa612a4802f0ab2922c2c68326f880981a9d",
+    "antes-correcao-1": "b90b224393e77a90eb057915c5a70b14bdfb2255",
+    "antes-correcao-2": "e2be20cc263f4245aa1bfd9ad0e55262013a3ceb",
+    "antes-correcao-3": "b2a35fb543295763a39028f8ee0bdd864dda618a"
+  },
+  "fase_inicio_ts": 1793578305.3969681,
+  "especificacao_ok": true,
+  "interrupcoes": [
+    {
+      "fase": "geracao",
+      "quando": "2026-11-01T17:21:38",
+      "sessoes_perdidas": [
+        "2b4c0f8f-0da8-45ac-963e-19d51beae7d9"
+      ]
+    }
+  ],
+  "geracao_ok": true,
+  "correcoes_chamadas": 3,
+  "concluida": true,
+  "fim": "2026-11-01T21:12:34",
+  "resumo": {
+    "aprovadas_inicial": 48,
+    "aprovadas_final": 52,
+    "ciclos": 3,
+    "chegou_a_100": false
+  }
+}

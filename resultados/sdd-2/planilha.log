@@ -1,0 +1,43 @@
+
+sdd_2: custo calculado pelo agentsview com tabela de preços da API (não é cobrança da assinatura)
+  especificacao  sessões 1 | tempo ativo   7.0 min | entrada         40 cache escrita    123,414 cache leitura    1,560,402 | saída   50,187 | US$ 2.3033
+  geracao        sessões 1 | tempo ativo  20.1 min | entrada        146 cache escrita    205,739 cache leitura   11,811,972 | saída  108,219 | US$ 6.1733
+  correcao       sessões 1 | tempo ativo   2.5 min | entrada         40 cache escrita     58,068 cache leitura    1,098,794 | saída    8,960 | US$ 0.8637
+
+falhas do Hurl (inicial), para classificar por categoria:
+  auth.hurl:91:0
+  auth.hurl:98:0
+  auth.hurl:177:0
+  auth.hurl:184:0
+  errors_auth.hurl:204:6
+
+falhas do Hurl (final), para classificar por categoria:
+  errors_auth.hurl:204:6
+
+escrito:
+  Tempo especificacao = 0:06:58
+  Tokens de saída especificacao = 50187
+  Custo especificacao = 2.3033
+  Tokens de entrada especificacao = 40
+  Tokens de cache leitura especificacao = 1560402
+  Tokens de cache escrita especificacao = 123414
+  Tempo geracao = 0:20:04
+  Tokens de saída geracao = 108219
+  Custo geracao = 6.1733
+  Tokens de entrada geracao = 146
+  Tokens de cache leitura geracao = 11811972
+  Tokens de cache escrita geracao = 205739
+  Tempo correcoes = 0:02:29
+  Tokens de saída correcoes = 8960
+  Custo correcoes = 0.8637
+  Tokens de entrada correcoes = 40
+  Tokens de cache leitura correcoes = 1098794
+  Tokens de cache escrita correcoes = 58068
+  Data = 2026-11-01 00:00:00
+  Ciclos de correção = 3
+  Requisições aprovadas inicial = 48
+  Requisições aprovadas final = 52
+pulado (use --sobrescrever para trocar):
+  Versão do Claude Code: já tem '2.1.316'
+  Modelo: já tem 'claude-opus-5-5'
+backup: C:\Users\sylla\Documents\tcc-wks\backups-planilha\metricas-execucoes-20261101-111952.xlsx

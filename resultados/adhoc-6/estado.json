@@ -1,0 +1,59 @@
+{
+  "sessoes": {
+    "geracao": "8f415102-62b1-4eb3-be3c-ab78e919edae",
+    "correcao": "f9da8f47-d276-443f-9549-a93a6f15e1df"
+  },
+  "rodadas": [
+    {
+      "rodada": 0,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 2,
+      "aprovadas": 51,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:113:0\n    |\n    | POST {{host}}/api/users/login\n    | ...\n113 | jsonpath \"$.errors.credentials[0]\" == \"invalid\"\n    |   actual:   none\n    |   expected: string <invalid>\n    |\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 1,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 2,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 3,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    }
+  ],
+  "inicio": "2026-11-02T07:58:44",
+  "commit_inicial": "8dfc7e6",
+  "checkpoints": {
+    "antes-geracao": "8cc49e5030860113b45043810d51d596642db85a",
+    "antes-correcao-1": "4cd669f29157fc2f96e011e74bc22bd0aec36b16",
+    "antes-correcao-2": "dd8734a35fcccbcc015962eb05f9e7a79174d490",
+    "antes-correcao-3": "fa8711d75149409edf067d40a8733558de0109f1"
+  },
+  "fase_inicio_ts": 1793618163.521913,
+  "geracao_ok": true,
+  "correcoes_chamadas": 3,
+  "concluida": true,
+  "fim": "2026-11-02T08:17:58",
+  "resumo": {
+    "aprovadas_inicial": 51,
+    "aprovadas_final": 52,
+    "ciclos": 3,
+    "chegou_a_100": false
+  }
+}

@@ -1,0 +1,31 @@
+Success auth.hurl (20 request(s) in 535 ms)
+error: Assert failure
+   --> errors_auth.hurl:113:0
+    |
+    | POST {{host}}/api/users/login
+    | ...
+113 | jsonpath "$.errors.credentials[0]" == "invalid"
+    |   actual:   none
+    |   expected: string <invalid>
+    |
+
+error: Assert status code
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |
+
+Failure errors_auth.hurl (20 request(s) in 423 ms)
+Success profiles.hurl (7 request(s) in 247 ms)
+Success errors_profiles.hurl (6 request(s) in 93 ms)
+--------------------------------------------------------------------------------
+Executed files:    4
+Executed requests: 53 (40.6/s)
+Succeeded files:   3 (75.0%)
+Failed files:      1 (25.0%)
+Duration:          1305 ms (0h:0m:1s:305ms)
+
+

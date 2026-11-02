@@ -1,0 +1,18 @@
+Executei a suíte de testes e tive estes erros:
+
+   --> errors_auth.hurl:113:0
+    |
+    | POST {{host}}/api/users/login
+    | ...
+113 | jsonpath "$.errors.credentials[0]" == "invalid"
+    |   actual:   none
+    |   expected: string <invalid>
+    |
+
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |

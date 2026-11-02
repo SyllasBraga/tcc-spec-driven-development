@@ -1,0 +1,89 @@
+error: Assert status code
+   --> auth.hurl:120:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+120 | HTTP 200
+    |      ^^^ actual value is <422>
+    |
+
+error: Assert failure
+   --> auth.hurl:129:0
+    |
+    | GET {{host}}/api/user
+    | ...
+129 | jsonpath "$.user.bio" == null
+    |   actual:   string <Temporary bio>
+    |   expected: null <null>
+    |
+
+error: Assert status code
+   --> auth.hurl:205:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+205 | HTTP 200
+    |      ^^^ actual value is <422>
+    |
+
+error: Assert failure
+   --> auth.hurl:214:0
+    |
+    | GET {{host}}/api/user
+    | ...
+214 | jsonpath "$.user.image" == null
+    |   actual:   string <https://example.com/temp.jpg>
+    |   expected: null <null>
+    |
+
+error: Assert failure
+   --> auth.hurl:230:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+230 | jsonpath "$.user.image" == null
+    |   actual:   string <https://example.com/temp.jpg>
+    |   expected: null <null>
+    |
+
+error: Assert failure
+   --> auth.hurl:244:0
+    |
+    | GET {{host}}/api/user
+    | ...
+244 | jsonpath "$.user.image" == null
+    |   actual:   string <https://example.com/temp.jpg>
+    |   expected: null <null>
+    |
+
+Failure auth.hurl (20 request(s) in 669 ms)
+error: Assert failure
+   --> errors_auth.hurl:113:0
+    |
+    | POST {{host}}/api/users/login
+    | ...
+113 | jsonpath "$.errors.credentials[0]" == "invalid"
+    |   actual:   none
+    |   expected: string <invalid>
+    |
+
+error: Assert status code
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |
+
+Failure errors_auth.hurl (20 request(s) in 438 ms)
+Success profiles.hurl (7 request(s) in 304 ms)
+Success errors_profiles.hurl (6 request(s) in 140 ms)
+--------------------------------------------------------------------------------
+Executed files:    4
+Executed requests: 53 (34.0/s)
+Succeeded files:   2 (50.0%)
+Failed files:      2 (50.0%)
+Duration:          1558 ms (0h:0m:1s:558ms)
+
+

@@ -1,0 +1,16 @@
+# sdd-5
+## commits
+edecea3 antes-correcao-3
+c0f2d63 antes-correcao-2
+0165b8b antes-correcao-1
+38896d0 antes-geracao
+6bbfed7 antes-especificacao
+e4c2197 estado inicial
+## arvore final vs estado inicial (sem target/.env)
+ 73 files changed, 4966 insertions(+), 1 deletion(-)
+## correcoes: arvore final vs antes-correcao-1
+ 6 files changed, 33 insertions(+), 6 deletions(-)
+## por ciclo (checkpoint a checkpoint)
+ 5 files changed, 29 insertions(+), 6 deletions(-)
+(ultimo ciclo)
+ 1 file changed, 4 insertions(+)

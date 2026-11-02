@@ -1,0 +1,37 @@
+
+adhoc_2: custo calculado pelo agentsview com tabela de preços da API (não é cobrança da assinatura)
+  geracao        sessões 1 | tempo ativo  12.0 min | entrada         86 cache escrita    138,700 cache leitura    4,540,334 | saída   76,650 | US$ 3.5510
+  correcao       sessões 1 | tempo ativo   4.7 min | entrada         64 cache escrita     87,315 cache leitura    2,238,949 | saída   17,496 | US$ 1.4965
+
+falhas do Hurl (inicial), para classificar por categoria:
+  auth.hurl:91:0
+  auth.hurl:98:0
+  auth.hurl:177:0
+  auth.hurl:184:0
+  errors_auth.hurl:113:0
+  errors_auth.hurl:204:6
+
+falhas do Hurl (final), para classificar por categoria:
+  errors_auth.hurl:204:6
+
+escrito:
+  Tempo geracao = 0:12:00
+  Tokens de saída geracao = 76650
+  Custo geracao = 3.551
+  Tokens de entrada geracao = 86
+  Tokens de cache leitura geracao = 4540334
+  Tokens de cache escrita geracao = 138700
+  Tempo correcoes = 0:04:45
+  Tokens de saída correcoes = 17496
+  Custo correcoes = 1.4965
+  Tokens de entrada correcoes = 64
+  Tokens de cache leitura correcoes = 2238949
+  Tokens de cache escrita correcoes = 87315
+  Data = 2026-11-01 00:00:00
+  Ciclos de correção = 3
+  Requisições aprovadas inicial = 47
+  Requisições aprovadas final = 52
+pulado (use --sobrescrever para trocar):
+  Versão do Claude Code: já tem '2.1.316'
+  Modelo: já tem 'claude-opus-5-5'
+backup: C:\Users\sylla\Documents\tcc-wks\backups-planilha\metricas-execucoes-20261101-104759.xlsx

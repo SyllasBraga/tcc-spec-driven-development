@@ -1,0 +1,296 @@
+openapi: 3.1.0
+info:
+  title: RealWorld Conduit API — Recorte A
+  description: |
+    Contrato do Recorte A (usuários, autenticação e perfis), derivado da
+    especificação OpenAPI de `descricao-base.md`. Rotas, formatos e códigos
+    de status são os do contrato original. Este arquivo acrescenta apenas os
+    exemplos de erro decididos na spec (FR-001 a FR-035) e o cabeçalho
+    `Content-Type` obrigatório.
+
+    Todas as respostas com corpo usam `Content-Type: application/json; charset=utf-8`
+    (o servidor emite `application/json;charset=UTF-8`, equivalente pela RFC 9110).
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+  version: 2.0.0-recorte-a
+tags:
+  - name: Profile
+  - name: User and Authentication
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /users/login:
+    post:
+      tags: [User and Authentication]
+      summary: Existing user login
+      operationId: Login
+      requestBody:
+        $ref: '#/components/requestBodies/LoginUserRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '401':
+          description: Credenciais não correspondem a um usuário (FR-008)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GenericErrorModel' }
+              example: { errors: { credentials: [invalid] } }
+        '422':
+          $ref: '#/components/responses/GenericError'
+  /users:
+    post:
+      tags: [User and Authentication]
+      description: Register a new user
+      operationId: CreateUser
+      requestBody:
+        $ref: '#/components/requestBodies/NewUserRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/UserResponse'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '422':
+          $ref: '#/components/responses/GenericError'
+  /user:
+    get:
+      tags: [User and Authentication]
+      summary: Get current user
+      operationId: GetCurrentUser
+      security:
+        - Token: []
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/GenericError'
+    put:
+      tags: [User and Authentication]
+      summary: Update current user
+      operationId: UpdateCurrentUser
+      security:
+        - Token: []
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUserRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          description: |
+            Validação falhou, nenhum campo enviado (FR-017) ou e-mail/username
+            já usado por outro usuário (FR-019).
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GenericErrorModel' }
+              examples:
+                emUso:
+                  value: { errors: { email: [has already been taken] } }
+                vazio:
+                  value: { errors: { body: ["can't be empty"] } }
+  /profiles/{username}:
+    get:
+      tags: [Profile]
+      summary: Get a profile
+      description: Auth is optional. Token presente e inválido → 401.
+      operationId: GetProfileByUsername
+      parameters:
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/GenericError'
+  /profiles/{username}/follow:
+    post:
+      tags: [Profile]
+      summary: Follow a user (idempotente)
+      operationId: FollowUserByUsername
+      security:
+        - Token: []
+      parameters:
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          description: Tentativa de seguir a si mesmo (FR-027)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GenericErrorModel' }
+              example: { errors: { profile: [cannot follow yourself] } }
+    delete:
+      tags: [Profile]
+      summary: Unfollow a user (idempotente)
+      operationId: UnfollowUserByUsername
+      security:
+        - Token: []
+      parameters:
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/GenericError'
+components:
+  securitySchemes:
+    Token:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Formato obrigatório: `Authorization: Token <jwt>`'
+  parameters:
+    Username:
+      name: username
+      in: path
+      required: true
+      description: Nome de usuário (diferencia maiúsculas de minúsculas)
+      schema:
+        type: string
+  requestBodies:
+    LoginUserRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user: { $ref: '#/components/schemas/LoginUser' }
+    NewUserRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user: { $ref: '#/components/schemas/NewUser' }
+    UpdateUserRequest:
+      required: true
+      description: Ao menos um campo. `bio`/`image` iguais a `null` limpam o valor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user: { $ref: '#/components/schemas/UpdateUser' }
+  responses:
+    ConflictError:
+      description: Username ou e-mail já cadastrado (FR-004, FR-005)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/GenericErrorModel' }
+          example:
+            errors:
+              username: [has already been taken]
+    GenericError:
+      description: Falha de validação
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/GenericErrorModel' }
+          examples:
+            campoVazio:
+              value: { errors: { email: ["can't be blank"] } }
+            emailInvalido:
+              value: { errors: { email: [is invalid] } }
+            corpoInvalido:
+              value: { errors: { body: ["can't be empty"] } }
+    NotFound:
+      description: Perfil inexistente (FR-023)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/GenericErrorModel' }
+          example: { errors: { profile: [not found] } }
+    Unauthorized:
+      description: Token ausente (FR-011) ou inválido (FR-012)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/GenericErrorModel' }
+          examples:
+            ausente:
+              value: { errors: { token: [is missing] } }
+            invalido:
+              value: { errors: { token: [is invalid] } }
+    UserResponse:
+      description: User
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user: { $ref: '#/components/schemas/User' }
+    ProfileResponse:
+      description: Profile
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [profile]
+            properties:
+              profile: { $ref: '#/components/schemas/Profile' }
+  schemas:
+    GenericErrorModel:
+      type: object
+      required: [errors]
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items: { type: string }
+    LoginUser:
+      type: object
+      required: [email, password]
+      properties:
+        email: { type: string }
+        password: { type: string, format: password }
+    NewUser:
+      type: object
+      required: [email, password, username]
+      properties:
+        username: { type: string }
+        email: { type: string }
+        password: { type: string, format: password }
+    UpdateUser:
+      type: object
+      properties:
+        email: { type: string }
+        password: { type: string }
+        username: { type: string }
+        bio: { type: [string, 'null'] }
+        image: { type: [string, 'null'] }
+    User:
+      type: object
+      required: [bio, email, image, token, username]
+      properties:
+        email: { type: string }
+        token: { type: string }
+        username: { type: string }
+        bio: { type: [string, 'null'] }
+        image: { type: [string, 'null'] }
+    Profile:
+      type: object
+      required: [bio, following, image, username]
+      properties:
+        username: { type: string }
+        bio: { type: [string, 'null'] }
+        image: { type: [string, 'null'] }
+        following: { type: boolean }

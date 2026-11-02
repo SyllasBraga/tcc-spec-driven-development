@@ -1,0 +1,4 @@
+spring:
+  flyway:
+    # Fictitious development data lives outside db/migration and is only loaded in this profile.
+    locations: classpath:db/migration,classpath:db/dev-seed

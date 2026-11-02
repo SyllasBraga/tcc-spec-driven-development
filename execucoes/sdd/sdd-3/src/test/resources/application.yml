@@ -1,0 +1,22 @@
+# Este arquivo sombreia src/main/resources/application.yml no classpath de teste.
+# O datasource vem do TestcontainersConfiguration (@ServiceConnection).
+spring:
+  application:
+    name: blog
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  jwt:
+    # Base64 de "teste-somente-local-nao-usar-32b" (valor fictício, somente para testes)
+    secret: dGVzdGUtc29tZW50ZS1sb2NhbC1uYW8tdXNhci0zMmI=
+    issuer: conduit-blog-test
+    ttl: 24h

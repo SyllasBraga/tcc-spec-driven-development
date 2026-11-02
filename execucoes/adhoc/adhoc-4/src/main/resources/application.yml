@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: blog
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+server:
+  shutdown: graceful
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: conduit
+    time-to-live: 24h

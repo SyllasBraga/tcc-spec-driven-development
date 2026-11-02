@@ -1,0 +1,15 @@
+# adhoc-5
+## commits
+528ef09 antes-correcao-3
+fc0cbd8 antes-correcao-2
+231a37a antes-correcao-1
+7d7288b antes-geracao
+4f49986 estado inicial
+## arvore final vs estado inicial (sem target/.env)
+ 44 files changed, 1965 insertions(+)
+## correcoes: arvore final vs antes-correcao-1
+ 7 files changed, 169 insertions(+), 21 deletions(-)
+## por ciclo (checkpoint a checkpoint)
+ 4 files changed, 119 insertions(+), 20 deletions(-)
+(ultimo ciclo)
+ 5 files changed, 51 insertions(+), 2 deletions(-)

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: blog
+  config:
+    # Local values (database credentials, JWT secret) from the untracked .env file, when present.
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  servlet:
+    encoding:
+      # Makes JSON responses declare "Content-Type: application/json;charset=UTF-8", as the API contract requires.
+      charset: UTF-8
+      force: true
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: conduit
+    ttl: 24h
+server:
+  shutdown: graceful
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

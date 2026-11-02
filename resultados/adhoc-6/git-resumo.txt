@@ -1,0 +1,15 @@
+# adhoc-6
+## commits
+fa8711d antes-correcao-3
+dd8734a antes-correcao-2
+4cd669f antes-correcao-1
+8cc49e5 antes-geracao
+8dfc7e6 estado inicial
+## arvore final vs estado inicial (sem target/.env)
+ 63 files changed, 2434 insertions(+), 12 deletions(-)
+## correcoes: arvore final vs antes-correcao-1
+ 4 files changed, 86 insertions(+), 5 deletions(-)
+## por ciclo (checkpoint a checkpoint)
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+ 3 files changed, 84 insertions(+), 3 deletions(-)
+(ultimo ciclo)

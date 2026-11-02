@@ -1,0 +1,6 @@
+# Sobrescreve apenas o necessário para os testes; o application.yml principal continua carregado.
+app:
+  jwt:
+    secret: segredo-de-teste-ficticio-com-mais-de-32-bytes!!
+    issuer: conduit-blog
+    ttl: 24h

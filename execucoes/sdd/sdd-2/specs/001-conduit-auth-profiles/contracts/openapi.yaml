@@ -1,0 +1,330 @@
+# Contrato do recorte A da API Conduit.
+# Base: especificação OpenAPI de descricao-base.md (obrigatória).
+# Acréscimos deste arquivo (sem alterar rotas, schemas nem status do contrato original):
+#   - exemplos de erro com as chaves e mensagens decididas na spec (Assumptions);
+#   - 422 por "seguir a si mesmo" no POST /follow (já previsto pelo contrato como GenericError);
+#   - 401 "is invalid" para token inválido, além de "is missing".
+openapi: 3.1.0
+info:
+  title: RealWorld Conduit API - Recorte A
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+  version: 2.0.0
+tags:
+  - name: Profile
+  - name: User and Authentication
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /users/login:
+    post:
+      tags: [User and Authentication]
+      summary: Existing user login
+      operationId: Login
+      requestBody:
+        $ref: '#/components/requestBodies/LoginUserRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '401':
+          description: Credenciais inválidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorModel'
+              example:
+                errors:
+                  credentials: [invalid]
+        '422':
+          $ref: '#/components/responses/GenericError'
+  /users:
+    post:
+      tags: [User and Authentication]
+      description: Register a new user
+      operationId: CreateUser
+      requestBody:
+        $ref: '#/components/requestBodies/NewUserRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/UserResponse'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '422':
+          $ref: '#/components/responses/GenericError'
+  /user:
+    get:
+      tags: [User and Authentication]
+      summary: Get current user
+      operationId: GetCurrentUser
+      security:
+        - Token: []
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      tags: [User and Authentication]
+      summary: Update current user
+      operationId: UpdateCurrentUser
+      security:
+        - Token: []
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUserRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '422':
+          $ref: '#/components/responses/GenericError'
+  /profiles/{username}:
+    get:
+      tags: [Profile]
+      summary: Get a profile (auth optional)
+      operationId: GetProfileByUsername
+      parameters:
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /profiles/{username}/follow:
+    post:
+      tags: [Profile]
+      summary: Follow a user
+      operationId: FollowUserByUsername
+      security:
+        - Token: []
+      parameters:
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          description: Tentativa de seguir a si mesmo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorModel'
+              example:
+                errors:
+                  profile: [cannot follow yourself]
+    delete:
+      tags: [Profile]
+      summary: Unfollow a user
+      operationId: UnfollowUserByUsername
+      security:
+        - Token: []
+      parameters:
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    Token:
+      type: apiKey
+      description: "Formato do cabeçalho: `Authorization: Token xxxxxx.yyyyyyy.zzzzzz`"
+      name: Authorization
+      in: header
+  parameters:
+    Username:
+      name: username
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    LoginUserRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user:
+                $ref: '#/components/schemas/LoginUser'
+    NewUserRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user:
+                $ref: '#/components/schemas/NewUser'
+    UpdateUserRequest:
+      required: true
+      description: User details to update. At least **one** field is required.
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user:
+                $ref: '#/components/schemas/UpdateUser'
+  responses:
+    ConflictError:
+      description: Conflict - resource already exists
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericErrorModel'
+          example:
+            errors:
+              username: [has already been taken]
+    GenericError:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericErrorModel'
+          examples:
+            campoEmBranco:
+              value:
+                errors:
+                  email: ["can't be blank"]
+            emailInvalido:
+              value:
+                errors:
+                  email: [is invalid]
+            corpoAusente:
+              value:
+                errors:
+                  body: ["can't be empty"]
+            atualizacaoVazia:
+              value:
+                errors:
+                  user: ["can't be empty"]
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericErrorModel'
+          example:
+            errors:
+              profile: [not found]
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericErrorModel'
+          examples:
+            tokenAusente:
+              value:
+                errors:
+                  token: [is missing]
+            tokenInvalido:
+              value:
+                errors:
+                  token: [is invalid]
+    ProfileResponse:
+      description: Profile
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [profile]
+            properties:
+              profile:
+                $ref: '#/components/schemas/Profile'
+    UserResponse:
+      description: User
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user:
+                $ref: '#/components/schemas/User'
+  schemas:
+    GenericErrorModel:
+      type: object
+      required: [errors]
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    LoginUser:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+          format: password
+    NewUser:
+      type: object
+      required: [email, password, username]
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+          format: password
+    UpdateUser:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        username:
+          type: string
+        bio:
+          type: [string, 'null']
+        image:
+          type: [string, 'null']
+    User:
+      type: object
+      required: [bio, email, image, token, username]
+      properties:
+        email:
+          type: string
+        token:
+          type: string
+        username:
+          type: string
+        bio:
+          type: [string, 'null']
+        image:
+          type: [string, 'null']
+    Profile:
+      type: object
+      required: [bio, following, image, username]
+      properties:
+        username:
+          type: string
+        bio:
+          type: [string, 'null']
+        image:
+          type: [string, 'null']
+        following:
+          type: boolean

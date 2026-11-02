@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: blog
+  config:
+    # Valores locais (não versionados); variáveis de ambiente reais têm precedência.
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: true
+server:
+  shutdown: graceful
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+conduit:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: conduit
+    time-to-live: 24h

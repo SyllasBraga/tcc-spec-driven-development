@@ -1,0 +1,6 @@
+# adhoc-2
+## commits
+b517f06 estado inicial
+## arvore final vs estado inicial (sem target/.env)
+ 61 files changed, 2133 insertions(+), 1 deletion(-)
+## sem checkpoints de correcao (execucao anterior ao recurso)

@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: blog
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: true
+server:
+  shutdown: graceful
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: conduit-blog
+    ttl: 24h
+logging:
+  level:
+    org.springframework.security: WARN

@@ -1,0 +1,90 @@
+Executei a suíte de testes e tive estes erros:
+
+   --> auth.hurl:91:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+ 91 | jsonpath "$.user.bio" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:98:0
+    |
+    | GET {{host}}/api/user
+    | ...
+ 98 | jsonpath "$.user.bio" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:177:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+177 | jsonpath "$.user.image" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:184:0
+    |
+    | GET {{host}}/api/user
+    | ...
+184 | jsonpath "$.user.image" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> errors_auth.hurl:12:0
+    |
+    | POST {{host}}/api/users
+    | ...
+ 12 | jsonpath "$.errors.username[0]" == "can't be blank"
+    |   actual:   string <can't be empty>
+    |   expected: string <can't be blank>
+    |
+
+   --> errors_auth.hurl:25:0
+    |
+    | POST {{host}}/api/users
+    | ...
+ 25 | jsonpath "$.errors.email[0]" == "can't be blank"
+    |   actual:   string <can't be empty>
+    |   expected: string <can't be blank>
+    |
+
+   --> errors_auth.hurl:38:0
+    |
+    | POST {{host}}/api/users
+    | ...
+ 38 | jsonpath "$.errors.password[0]" == "can't be blank"
+    |   actual:   string <can't be empty>
+    |   expected: string <can't be blank>
+    |
+
+   --> errors_auth.hurl:89:0
+    |
+    | POST {{host}}/api/users/login
+    | ...
+ 89 | jsonpath "$.errors.email[0]" == "can't be blank"
+    |   actual:   string <can't be empty>
+    |   expected: string <can't be blank>
+    |
+
+   --> errors_auth.hurl:101:0
+    |
+    | POST {{host}}/api/users/login
+    | ...
+101 | jsonpath "$.errors.password[0]" == "can't be blank"
+    |   actual:   string <can't be empty>
+    |   expected: string <can't be blank>
+    |
+
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |

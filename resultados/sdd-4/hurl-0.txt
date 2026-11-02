@@ -1,0 +1,61 @@
+error: Assert failure
+   --> auth.hurl:91:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+ 91 | jsonpath "$.user.bio" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+error: Assert failure
+   --> auth.hurl:98:0
+    |
+    | GET {{host}}/api/user
+    | ...
+ 98 | jsonpath "$.user.bio" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+error: Assert failure
+   --> auth.hurl:177:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+177 | jsonpath "$.user.image" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+error: Assert failure
+   --> auth.hurl:184:0
+    |
+    | GET {{host}}/api/user
+    | ...
+184 | jsonpath "$.user.image" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+Failure auth.hurl (20 request(s) in 617 ms)
+error: Assert status code
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |
+
+Failure errors_auth.hurl (20 request(s) in 417 ms)
+Success profiles.hurl (7 request(s) in 242 ms)
+Success errors_profiles.hurl (6 request(s) in 97 ms)
+--------------------------------------------------------------------------------
+Executed files:    4
+Executed requests: 53 (38.4/s)
+Succeeded files:   2 (50.0%)
+Failed files:      2 (50.0%)
+Duration:          1381 ms (0h:0m:1s:381ms)
+
+

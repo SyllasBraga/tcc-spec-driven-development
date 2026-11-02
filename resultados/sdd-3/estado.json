@@ -1,0 +1,62 @@
+{
+  "sessoes": {
+    "especificacao": "7bd49be4-c646-4487-a44a-a6f244d3fdcf",
+    "geracao": "10ff6b39-c280-4621-837b-4fbfe59d2137",
+    "correcao": "062e5725-8528-4920-bf22-964e5916c57f"
+  },
+  "rodadas": [
+    {
+      "rodada": 0,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 1,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 2,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 3,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    }
+  ],
+  "inicio": "2026-11-01T16:02:17",
+  "commit_inicial": "a911a90",
+  "checkpoints": {
+    "antes-especificacao": "592dfd9b91d9e6b5dd4e9a2cd117cf5c03ac9394",
+    "antes-geracao": "bf70d9206d4a024788c0264430275a661077d4f3",
+    "antes-correcao-1": "ba7a920eebebee2634f3abf5e10f0f3bf1ce52f2",
+    "antes-correcao-2": "42a4ee9778c026913b9fae2ba40462b61b5fa228",
+    "antes-correcao-3": "6746bf8c5f143a156a581e68c748ce72727139d0"
+  },
+  "fase_inicio_ts": 1793561655.9876282,
+  "especificacao_ok": true,
+  "geracao_ok": true,
+  "correcoes_chamadas": 3,
+  "concluida": true,
+  "fim": "2026-11-01T16:36:56",
+  "resumo": {
+    "aprovadas_inicial": 52,
+    "aprovadas_final": 52,
+    "ciclos": 3,
+    "chegou_a_100": false
+  }
+}

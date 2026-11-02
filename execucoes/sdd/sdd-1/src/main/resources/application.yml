@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: blog
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: true
+server:
+  shutdown: graceful
+  port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+conduit:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: conduit-blog
+    validade: PT24H

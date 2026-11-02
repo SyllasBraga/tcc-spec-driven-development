@@ -1,0 +1,6 @@
+# adhoc-3
+## commits
+41a3884 estado inicial
+## arvore final vs estado inicial (sem target/.env)
+ 49 files changed, 2167 insertions(+)
+## sem checkpoints de correcao (execucao anterior ao recurso)

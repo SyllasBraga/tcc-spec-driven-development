@@ -1,0 +1,6 @@
+# sdd-2
+## commits
+28b90d4 estado inicial
+## arvore final vs estado inicial (sem target/.env)
+ 61 files changed, 4742 insertions(+), 2 deletions(-)
+## sem checkpoints de correcao (execucao anterior ao recurso)

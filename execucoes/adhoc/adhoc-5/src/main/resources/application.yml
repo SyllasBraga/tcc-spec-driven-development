@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: blog
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  servlet:
+    encoding:
+      # Garante "Content-Type: application/json;charset=UTF-8", exigido pelo contrato da API.
+      force-response: true
+server:
+  shutdown: graceful
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: conduit
+    time-to-live: 24h

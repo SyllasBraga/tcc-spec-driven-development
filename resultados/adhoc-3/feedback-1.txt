@@ -1,0 +1,54 @@
+Executei a suíte de testes e tive estes erros:
+
+   --> auth.hurl:91:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+ 91 | jsonpath "$.user.bio" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:98:0
+    |
+    | GET {{host}}/api/user
+    | ...
+ 98 | jsonpath "$.user.bio" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:177:0
+    |
+    | PUT {{host}}/api/user
+    | ...
+177 | jsonpath "$.user.image" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> auth.hurl:184:0
+    |
+    | GET {{host}}/api/user
+    | ...
+184 | jsonpath "$.user.image" == null
+    |   actual:   string <>
+    |   expected: null <null>
+    |
+
+   --> errors_auth.hurl:113:0
+    |
+    | POST {{host}}/api/users/login
+    | ...
+113 | jsonpath "$.errors.credentials[0]" == "invalid"
+    |   actual:   none
+    |   expected: string <invalid>
+    |
+
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |

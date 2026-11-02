@@ -1,0 +1,6 @@
+# Valores fictícios, usados somente nos testes automatizados.
+conduit:
+  jwt:
+    secret: segredo-de-teste-ficticio-com-mais-de-32-bytes
+    issuer: conduit-blog
+    validade: PT24H

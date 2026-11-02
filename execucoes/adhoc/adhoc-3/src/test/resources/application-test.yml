@@ -1,0 +1,10 @@
+# Perfil dos testes de integração. O banco real vem do Testcontainers (@ServiceConnection);
+# os valores abaixo só preenchem os placeholders e são fictícios.
+spring:
+  datasource:
+    url: jdbc:postgresql://substituido-pelo-testcontainers/teste
+    username: teste
+    password: teste
+conduit:
+  jwt:
+    secret: chave-ficticia-somente-para-testes-0123456789abcdef

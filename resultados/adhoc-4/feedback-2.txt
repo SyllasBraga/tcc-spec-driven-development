@@ -1,0 +1,9 @@
+Executei a suíte de testes e tive estes erros:
+
+   --> errors_auth.hurl:204:6
+    |
+    | PUT {{host}}/api/user
+    | ...
+204 | HTTP 422
+    |      ^^^ actual value is <200>
+    |

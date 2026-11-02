@@ -1,0 +1,62 @@
+{
+  "sessoes": {
+    "especificacao": "faf5596f-efcb-400a-a61f-83fa1d20b524",
+    "geracao": "a56f1056-d58d-4571-8991-44d5a037e5e7",
+    "correcao": "57c5459e-c70a-4e6a-b67a-ab55dea40131"
+  },
+  "rodadas": [
+    {
+      "rodada": 0,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 10,
+      "aprovadas": 43,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> auth.hurl:91:0\n    |\n    | PUT {{host}}/api/user\n    | ...\n 91 | jsonpath \"$.user.bio\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> auth.hurl:98:0\n    |\n    | GET {{host}}/api/user\n    | ...\n 98 | jsonpath \"$.user.bio\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> auth.hurl:177:0\n    |\n    | PUT {{host}}/api/user\n    | ...\n177 | jsonpath \"$.user.image\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> auth.hurl:184:0\n    |\n    | GET {{host}}/api/user\n    | ...\n184 | jsonpath \"$.user.image\" == null\n    |   actual:   string <>\n    |   expected: null <null>\n    |\n\n   --> errors_auth.hurl:12:0\n    |\n    | POST {{host}}/api/users\n    | ...\n 12 | jsonpath \"$.errors.username[0]\" == \"can't be blank\"\n    |   actual:   string <can't be empty>\n    |   expected: string <can't be blank>\n    |\n\n   --> errors_auth.hurl:25:0\n    |\n    | POST {{host}}/api/users\n    | ...\n 25 | jsonpath \"$.errors.email[0]\" == \"can't be blank\"\n    |   actual:   string <can't be empty>\n    |   expected: string <can't be blank>\n    |\n\n   --> errors_auth.hurl:38:0\n    |\n    | POST {{host}}/api/users\n    | ...\n 38 | jsonpath \"$.errors.password[0]\" == \"can't be blank\"\n    |   actual:   string <can't be empty>\n    |   expected: string <can't be blank>\n    |\n\n   --> errors_auth.hurl:89:0\n    |\n    | POST {{host}}/api/users/login\n    | ...\n 89 | jsonpath \"$.errors.email[0]\" == \"can't be blank\"\n    |   actual:   string <can't be empty>\n    |   expected: string <can't be blank>\n    |\n\n   --> errors_auth.hurl:101:0\n    |\n    | POST {{host}}/api/users/login\n    | ...\n101 | jsonpath \"$.errors.password[0]\" == \"can't be blank\"\n    |   actual:   string <can't be empty>\n    |   expected: string <can't be blank>\n    |\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 1,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 2,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 1,
+      "aprovadas": 52,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    },
+    {
+      "rodada": 3,
+      "infra": null,
+      "executadas": 53,
+      "falhas": 2,
+      "aprovadas": 51,
+      "feedback": "Executei a suíte de testes e tive estes erros:\n\n   --> errors_auth.hurl:25:0\n    |\n    | POST {{host}}/api/users\n    | ...\n 25 | jsonpath \"$.errors.email[0]\" == \"can't be blank\"\n    |   actual:   string <is invalid>\n    |   expected: string <can't be blank>\n    |\n\n   --> errors_auth.hurl:204:6\n    |\n    | PUT {{host}}/api/user\n    | ...\n204 | HTTP 422\n    |      ^^^ actual value is <200>\n    |"
+    }
+  ],
+  "inicio": "2026-11-02T08:18:00",
+  "commit_inicial": "78844f8",
+  "checkpoints": {
+    "antes-especificacao": "40b752ba19e3541983aa23ea8a70237f2f5a3031",
+    "antes-geracao": "643774799309dd15f1425913b12c4a0a4e7be97d",
+    "antes-correcao-1": "ce5933eaef9e317fcb3808ad0930bc0c5a26d764",
+    "antes-correcao-2": "cfc5084651a51abd759a8aab3b59635268e0a8bf",
+    "antes-correcao-3": "5713f334916db275668514f6fc49323213fb286b"
+  },
+  "fase_inicio_ts": 1793620130.897175,
+  "especificacao_ok": true,
+  "geracao_ok": true,
+  "correcoes_chamadas": 3,
+  "concluida": true,
+  "fim": "2026-11-02T08:49:36",
+  "resumo": {
+    "aprovadas_inicial": 43,
+    "aprovadas_final": 51,
+    "ciclos": 3,
+    "chegou_a_100": false
+  }
+}
